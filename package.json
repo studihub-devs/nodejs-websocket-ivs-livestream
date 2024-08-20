@@ -1,0 +1,39 @@
+{
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.17.10",
+    "@types/jest": "^29.5.12",
+    "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ivs": "^3.515.0",
+    "@types/ws": "^8.5.10",
+    "axios": "^1.6.7",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "rxjs": "^7.8.1",
+    "uuid": "^9.0.1",
+    "ws": "^8.16.0"
+  },
+  "scripts": {
+    "watch-ts": "tsc -w",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "start": "npx ts-node index.ts",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon -r dotenv/config --inspect dist/index.js",
+    "build": "npm run build-ts",
+    "build-ts": "tsc",
+    "test": "jest",
+    "dev": "nodemon"
+  }
+}
